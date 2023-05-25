@@ -11,7 +11,7 @@ body {
 /* it like create a setup */
 :root {
     --cell-size: 100px;
-    --mark-size: calc(var(--cell-size) * .9)
+    --mark-size: calc(var(--cell-size) * .7)
 }
 
 .board {
@@ -152,7 +152,7 @@ body {
     font-size: 5rem;
 }
 
-.winning-message .show {
+.show {
     display: flex;
 }
 
