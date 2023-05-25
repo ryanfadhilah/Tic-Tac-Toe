@@ -2,16 +2,47 @@
 *::after,
 *::before {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* transition: all ease-in-out 100ms; */
 }
 
+h1 {
+    bottom: 80%;
+    position: fixed;
+    /* background-color: aqua; */
+}
+
+#par {
+    bottom: 75%;
+    position: fixed;
+}
+
+#guideX {
+    bottom: 75%;
+    position: fixed;
+}
+
+#guideO {
+    bottom: 75%;
+    position: fixed;
+}
+
+
+
 body {
-    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* it like create a setup */
 :root {
     --cell-size: 100px;
-    --mark-size: calc(var(--cell-size) * .7)
+    --mark-size: calc(var(--cell-size) * .6)
 }
 
 .board {
@@ -154,6 +185,10 @@ body {
 
 .show {
     display: flex;
+}
+
+.hide {
+    display: none;
 }
 
 .winning-message button {
