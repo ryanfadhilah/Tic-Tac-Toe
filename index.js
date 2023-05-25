@@ -3,6 +3,7 @@ const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
+let count = 0
 
 // memory
 const x_class = 'x'
@@ -29,8 +30,6 @@ startGame()
 function startGame() {
     console.log('game start !')
 
-    // 
-
     circleTurn = false
     cellElements.forEach((cell) => {
         // once true: only applied once
@@ -52,9 +51,14 @@ function handleClick(e) {
     // check win
     if (checkWin(currentClass)) {
         console.log('Got Winner')
-        endGame(false)
+        winner(false)
     }
     // check draw
+    count += 1
+    if (count === 9) {
+        console.log(`no winner`)
+        draw()
+    }
 }
 
 
@@ -76,6 +80,7 @@ function setBoardHoverClass() {
         board.classList.add(x_class)
     }
 }
+
 function checkWin(currentClass) {
     // some : check all element, atleast one pass, pas = true
     return WIN.some((combination) => {
@@ -86,14 +91,14 @@ function checkWin(currentClass) {
         })
     })
 }
-function endGame(draw) {
-    if (draw) {
-        console.log(`no winner`)
-    } else {
-        winningMessageTextElement.innerText = `${circleTurn ? "X`s" : "O`s"} Wins !`
-    }
-    winningMessageElement.classList.add('show')
 
+function winner(draw) {
+    winningMessageTextElement.innerText = `${circleTurn ? "X`s" : "O`s"} Wins !`
+    winningMessageElement.classList.add('show')
+}
+function draw(draw) {
+    winningMessageTextElement.innerText = `Draw`
+    winningMessageElement.classList.add('show')
 }
 
 function restart() {
